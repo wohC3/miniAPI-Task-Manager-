@@ -18,13 +18,21 @@ public static class TaskEndpoints
         });
         //PUT(UPDATE) TASK BY ID ENDPOINT
         app.MapPut("/tasks/{id}", (int id, UpdateTaskDto dto, TaskService service) =>
-            {
-                var updatedTask = service.UpdateTask(id, dto);
+        {
+            var updatedTask = service.UpdateTask(id, dto);
 
-                return updatedTask is not null
-                  ? Results.Ok(updatedTask)
-                  : Results.NotFound();
-            });
+            return updatedTask is not null
+            ? Results.Ok(updatedTask)
+            : Results.NotFound();
+        });
+        app.MapDelete("/tasks/{id}", (int id, TaskService service) =>
+        {
+            var deletedTask = service.DeleteTask(id);
+
+            return deletedTask is not null
+              ? Results.NoContent()
+              : Results.NotFound(new { message = "Task not found)" });
+        });
     }
 
 

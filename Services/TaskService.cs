@@ -39,4 +39,15 @@ public class TaskService
         }
         return task;
     }
+    public TaskDto? DeleteTask(int id)
+    {
+        var task = _tasks.FirstOrDefault(t => t.Id == id);
+        if (task == null)
+        {
+            return null;
+        }
+
+        _tasks.Remove(task);
+        return task;
+    }
 }
