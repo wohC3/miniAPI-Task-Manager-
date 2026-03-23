@@ -5,6 +5,8 @@ Features:
 -Get all tasks
 -Post tasks
 -Update tasks based on ID
+-Delete tasks based on ID return 204 on success and 404 on task not found.
+
 
 Tech Stack
 .NET (minimal API)
